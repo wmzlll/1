@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <link rel="stylesheet" href="error.html">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #login-form{
+            width: 300px;
+            height: 400px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post" id="login-form">
+    <div>用户名：<input type="text" name="username" id="username"></div>
+    <div>密码：<input type="password" name="password" id="password"></div>
+    <div><input type="checkbox" name="remember-password" id="remember-password" value="1">记住密码
+        <input type="checkbox" name="auto-login" id="=auto-login" value="1">自动登陆
+    </div>
+    <div>
+        <button id="login">登陆</button>
+    </div>
+</form>
+</body>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    var username=$("#username");
+    var password=$("#password");
+    var remember_password=$("#remember-password");
+    var auto_login=$("#auto-logo");
+    var login=$("#login");
+    login.click(function () {
+        $.ajax({
+            type:"post",
+            url:"php/login.php",
+            data:{um:username,pw:password,rp:remember_password,al:auto_login},
+            success:function (data) {
+                location.href=data;
+            }
+        })
+    });
+</script>
+</html>
